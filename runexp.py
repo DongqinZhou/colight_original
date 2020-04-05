@@ -303,14 +303,14 @@ def main(memo, env, road_net, gui, volume, suffix, mod, cnt, gen, r_all, workers
                 ),
 
             "DIC_REWARD_INFO": {
-                "flickering": 0,#-5,#
+                "flickering": 0,  # -5
                 "sum_lane_queue_length": 0,
                 "sum_lane_wait_time": 0,
-                "sum_lane_num_vehicle_left": 0,#-1,#
+                "sum_lane_num_vehicle_left": 0,  # -1
                 "sum_duration_vehicle_left": 0,
                 "sum_num_vehicle_been_stopped_thres01": 0,
-                "sum_num_vehicle_been_stopped_thres1": -0.25,
-                "pressure": 0  # -0.25
+                "sum_num_vehicle_been_stopped_thres1": 0,
+                "pressure": -0.25
             },
 
             "LANE_NUM": {
