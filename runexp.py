@@ -26,12 +26,12 @@ ANON_PHASE_REPRE=[]
 def parse_args():
     parser = argparse.ArgumentParser()
     # The file folder to create/log in
-    parser.add_argument("--memo", type=str, default='0405')#1_3,2_2,3_3,4_4
-    parser.add_argument("--env", type=int, default=1) #env=1 means you will run CityFlow
+    parser.add_argument("--memo", type=str, default='0518_original')  # 1_3,2_2,3_3,4_4
+    parser.add_argument("--env", type=int, default=1)  # env=1 means you will run CityFlow
     parser.add_argument("--gui", type=bool, default=False)
-    parser.add_argument("--road_net", type=str, default='3_3')#'1_2') # which road net you are going to run
-    parser.add_argument("--volume", type=str, default='300')#'300'
-    parser.add_argument("--suffix", type=str, default="0.3_bi")#0.3
+    parser.add_argument("--road_net", type=str, default='6_6')  # '1_2') # which road net you are going to run
+    parser.add_argument("--volume", type=str, default='300')  # '300'
+    parser.add_argument("--suffix", type=str, default="0.3_bi")  # 0.3
 
     global hangzhou_archive
     hangzhou_archive=False
@@ -52,16 +52,16 @@ def parse_args():
     # TAKE CARE
     ADJACENCY_BY_CONNECTION_OR_GEO=False
 
-    #modify:TOP_K_ADJACENCY in line 154
+    # modify:TOP_K_ADJACENCY in line 154
     global PRETRAIN
     PRETRAIN=False
-    parser.add_argument("--mod", type=str, default='CoLight')#SimpleDQN,SimpleDQNOne,GCN,CoLight,Lit
-    parser.add_argument("--cnt",type=int, default=3600)#3600
-    parser.add_argument("--gen",type=int, default=4)#4
+    parser.add_argument("--mod", type=str, default='CoLight')  # SimpleDQN,SimpleDQNOne,GCN,CoLight,Lit
+    parser.add_argument("--cnt",type=int, default=3600)  # 3600
+    parser.add_argument("--gen",type=int, default=4)  # 4
 
     parser.add_argument("-all", action="store_true", default=False)
-    parser.add_argument("--workers",type=int, default=7)
-    parser.add_argument("--onemodel",type=bool, default=False)
+    parser.add_argument("--workers", type=int, default=7)
+    parser.add_argument("--onemodel", type=bool, default=False)
 
     parser.add_argument("--visible_gpu", type=str, default="-1")
     global ANON_PHASE_REPRE
@@ -309,8 +309,8 @@ def main(memo, env, road_net, gui, volume, suffix, mod, cnt, gen, r_all, workers
                 "sum_lane_num_vehicle_left": 0,  # -1
                 "sum_duration_vehicle_left": 0,
                 "sum_num_vehicle_been_stopped_thres01": 0,
-                "sum_num_vehicle_been_stopped_thres1": 0,
-                "pressure": -0.25
+                "sum_num_vehicle_been_stopped_thres1": -0.25,
+                "pressure": 0  # -0.25
             },
 
             "LANE_NUM": {
@@ -321,10 +321,10 @@ def main(memo, env, road_net, gui, volume, suffix, mod, cnt, gen, r_all, workers
 
             "PHASE": {
                 "sumo": {
-                    0: [0, 1, 0, 1, 0, 0, 0, 0],# 'WSES',
-                    1: [0, 0, 0, 0, 0, 1, 0, 1],# 'NSSS',
-                    2: [1, 0, 1, 0, 0, 0, 0, 0],# 'WLEL',
-                    3: [0, 0, 0, 0, 1, 0, 1, 0]# 'NLSL',
+                    0: [0, 1, 0, 1, 0, 0, 0, 0],  # 'WSES',
+                    1: [0, 0, 0, 0, 0, 1, 0, 1],  # 'NSSS',
+                    2: [1, 0, 1, 0, 0, 0, 0, 0],  # 'WLEL',
+                    3: [0, 0, 0, 0, 1, 0, 1, 0]   # 'NLSL',
                 },
 
                 # "anon": {
